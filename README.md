@@ -8,7 +8,7 @@ configured with few params that are required for mongodb clusters.
 Installation
 ------------
 
-    pip install git+https://github.com/ShreehariVaasishta/tutor-mongodb-plugin.git
+    pip install git+https://github.com/dphi-official/tutor-mongodb-plugin.git
 
 Then, to enable this plugin, run:
 

@@ -27,10 +27,10 @@ ABOUT = load_about()
 setup(
     name="tutor-contrib-mongo",
     version=ABOUT["__version__"],
-    url="https://github.com/ShreehariVaasishta/tutor-mongodb-plugin.git",
+    url="https://github.com/dphi-official/tutor-mongodb-plugin.git",
     project_urls={
-        "Code": "https://github.com/ShreehariVaasishta/tutor-mongodb-plugin.git",
-        "Issue tracker": "https://github.com/ShreehariVaasishta/tutor-mongodb-plugin.git/issues",
+        "Code": "https://github.com/dphi-official/tutor-mongodb-plugin.git",
+        "Issue tracker": "https://github.com/dphi-official/tutor-mongodb-plugin.git/issues",
     },
     license="AGPLv3",
     author="ShreehariVaasishta",
@@ -40,11 +40,7 @@ setup(
     include_package_data=True,
     python_requires=">=3.7",
     install_requires=["tutor"],
-    entry_points={
-        "tutor.plugin.v1": [
-            "tutormongo = tutormongo.plugin"
-        ]
-    },
+    entry_points={"tutor.plugin.v1": ["tutormongo = tutormongo.plugin"]},
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
