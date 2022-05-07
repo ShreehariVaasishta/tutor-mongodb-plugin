@@ -1,0 +1,2 @@
+recursive-include tutormongo/patches *
+recursive-include tutormongo/templates *
