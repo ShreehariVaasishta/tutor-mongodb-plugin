@@ -74,14 +74,15 @@ for path in glob(
 hooks.Filters.ENV_PATCHES.add_item(
     (
         "openedx-lms-common-settings",
-        "mongodb_parameters['replicaSet'] = {% if MONGO_REPLICA_SET %}{% MONGO_REPLICA_SET %}{% else %}''{% endif %}",
-    ),
+        "mongodb_parameters['replicaSet'] = {{ MONGO_REPLICA_SET or '' }}",
+    )
+)
+hooks.Filters.ENV_PATCHES.add_item(
     (
         "openedx-lms-common-settings",
-        "mongodb_parameters['authsource'] = {% if MONGO_AUTH_SOURCE %}{% MONGO_AUTH_SOURCE %}{% else %}''{% endif %}",
+        "mongodb_parameters['authsource'] = {{ MONGO_AUTH_SOURCE or '' }}",
     ),
 )
-
 # Load all configuration entries
 hooks.Filters.CONFIG_DEFAULTS.add_items([(f"TUTORMONGO_{key}", value) for key, value in config["defaults"].items()])
 hooks.Filters.CONFIG_UNIQUE.add_items([(f"TUTORMONGO_{key}", value) for key, value in config["unique"].items()])
