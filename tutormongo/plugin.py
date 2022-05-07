@@ -73,16 +73,30 @@ for path in glob(
     with open(path, encoding="utf-8") as patch_file:
         hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
 
+# LMS
 hooks.Filters.ENV_PATCHES.add_item(
     (
         "openedx-lms-common-settings",
-        "mongodb_parameters['replicaSet'] = {{ MONGO_REPLICA_SET or '' }}",
+        'mongodb_parameters["replicaSet"] = "{{ MONGO_REPLICA_SET or "" }}"',
     )
 )
 hooks.Filters.ENV_PATCHES.add_item(
     (
         "openedx-lms-common-settings",
-        "mongodb_parameters['authsource'] = {{ MONGO_AUTH_SOURCE or '' }}",
+        'mongodb_parameters["authsource"] = "{{ MONGO_AUTH_SOURCE or "" }}"',
+    ),
+)
+# CMS
+hooks.Filters.ENV_PATCHES.add_item(
+    (
+        "openedx-cms-common-settings",
+        'mongodb_parameters["replicaSet"] = "{{ MONGO_REPLICA_SET or "" }}"',
+    )
+)
+hooks.Filters.ENV_PATCHES.add_item(
+    (
+        "openedx-cms-common-settings",
+        'mongodb_parameters["authsource"] = "{{ MONGO_AUTH_SOURCE or "" }}"',
     ),
 )
 
