@@ -12,6 +12,8 @@ config = {
     # Add here your new settings
     "defaults": {
         "VERSION": __version__,
+        "mongodb_parameters['authsource']": None,
+        "mongodb_parameters['replicaSet']": None,
     },
     # Add here settings that don't have a reasonable default for all users. For
     # instance: passwords, secret keys, etc.
@@ -83,6 +85,7 @@ hooks.Filters.ENV_PATCHES.add_item(
         "mongodb_parameters['authsource'] = {{ MONGO_AUTH_SOURCE or '' }}",
     ),
 )
+
 # Load all configuration entries
 hooks.Filters.CONFIG_DEFAULTS.add_items([(f"TUTORMONGO_{key}", value) for key, value in config["defaults"].items()])
 hooks.Filters.CONFIG_UNIQUE.add_items([(f"TUTORMONGO_{key}", value) for key, value in config["unique"].items()])
