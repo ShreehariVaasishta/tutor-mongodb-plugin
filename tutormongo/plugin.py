@@ -86,6 +86,13 @@ hooks.Filters.ENV_PATCHES.add_item(
         'mongodb_parameters["authsource"] = "{{ MONGO_AUTH_SOURCE or "" }}"',
     ),
 )
+hooks.Filters.ENV_PATCHES.add_item(
+    (
+        "openedx-lms-common-settings",
+        'mongodb_parameters["ssl"] = "{{ True if S3_USE_SSL else False }}"',
+    ),
+)
+
 # CMS
 hooks.Filters.ENV_PATCHES.add_item(
     (
@@ -97,6 +104,12 @@ hooks.Filters.ENV_PATCHES.add_item(
     (
         "openedx-cms-common-settings",
         'mongodb_parameters["authsource"] = "{{ MONGO_AUTH_SOURCE or "" }}"',
+    ),
+)
+hooks.Filters.ENV_PATCHES.add_item(
+    (
+        "openedx-cms-common-settings",
+        'mongodb_parameters["ssl"] = "{{ True if S3_USE_SSL else False }}"',
     ),
 )
 

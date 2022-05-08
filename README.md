@@ -19,6 +19,7 @@ Plugin configuration
 
 * `MONGO_REPLICA_SET` (default: `""`)
 * `MONGO_AUTH_SOURCE` (default: `""`)
+* `MONGO_AUTH_SOURCE` (default: `True`)
 
 These values can be modified by the `tutor config save --set
 PARAM_NAME=VALUE` command, or by setting them in `$(tutor config
