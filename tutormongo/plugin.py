@@ -12,8 +12,6 @@ config = {
     # Add here your new settings
     "defaults": {
         "VERSION": __version__,
-        "mongodb_parameters['authsource']": None,
-        "mongodb_parameters['replicaSet']": None,
     },
     # Add here settings that don't have a reasonable default for all users. For
     # instance: passwords, secret keys, etc.
@@ -23,6 +21,7 @@ config = {
     # Danger zone! Add here values to override settings from Tutor core or other plugins.
     "overrides": {
         # "PLATFORM_NAME": "My platform",
+        "mongodb_parameters": "mongodb_parameters"
     },
 }
 
