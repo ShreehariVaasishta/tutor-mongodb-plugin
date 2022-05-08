@@ -11,5 +11,4 @@ mongodb_parameters = {
     "db": "{{ MONGODB_DATABASE }}",
     "ssl": "{{ MONGODB_SSL }}",
     "authSource": "{{ MONGODB_AUTH_SOURCE }}",
-    "authMechanism": "{{ MONGODB_AUTH_MECHANISM }}",
 }
