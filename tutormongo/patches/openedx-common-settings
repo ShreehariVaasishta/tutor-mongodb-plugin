@@ -1,0 +1,15 @@
+mongodb_parameters = {
+    "host": "{{ MONGODB_HOST }}",
+    "port": {{ MONGODB_PORT }},
+    {% if MONGODB_USERNAME and MONGODB_PASSWORD %}
+    "user": "{{ MONGODB_USERNAME }}",
+    "password": "{{ MONGODB_PASSWORD }}",
+    {% else %}
+    "user": None,
+    "password": None,
+    {% endif %}
+    "db": "{{ MONGODB_DATABASE }}",
+    "ssl": "{{ MONGODB_SSL }}",
+    "authSource": "{{ MONGODB_AUTH_SOURCE }}",
+    "authMechanism": "{{ MONGODB_AUTH_MECHANISM }}",
+}

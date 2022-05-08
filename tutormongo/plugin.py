@@ -73,46 +73,6 @@ for path in glob(
     with open(path, encoding="utf-8") as patch_file:
         hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
 
-# LMS
-hooks.Filters.ENV_PATCHES.add_item(
-    (
-        "openedx-lms-common-settings",
-        'mongodb_parameters["replicaSet"] = "{{ MONGO_REPLICA_SET or "" }}"',
-    )
-)
-hooks.Filters.ENV_PATCHES.add_item(
-    (
-        "openedx-lms-common-settings",
-        'mongodb_parameters["authsource"] = "{{ MONGO_AUTH_SOURCE or "" }}"',
-    ),
-)
-hooks.Filters.ENV_PATCHES.add_item(
-    (
-        "openedx-lms-common-settings",
-        'mongodb_parameters["ssl"] = "{{ True if S3_USE_SSL else False }}"',
-    ),
-)
-
-# CMS
-hooks.Filters.ENV_PATCHES.add_item(
-    (
-        "openedx-cms-common-settings",
-        'mongodb_parameters["replicaSet"] = "{{ MONGO_REPLICA_SET or "" }}"',
-    )
-)
-hooks.Filters.ENV_PATCHES.add_item(
-    (
-        "openedx-cms-common-settings",
-        'mongodb_parameters["authsource"] = "{{ MONGO_AUTH_SOURCE or "" }}"',
-    ),
-)
-hooks.Filters.ENV_PATCHES.add_item(
-    (
-        "openedx-cms-common-settings",
-        'mongodb_parameters["ssl"] = "{{ True if S3_USE_SSL else False }}"',
-    ),
-)
-
 # Load all configuration entries
 hooks.Filters.CONFIG_DEFAULTS.add_items([(f"TUTORMONGO_{key}", value) for key, value in config["defaults"].items()])
 hooks.Filters.CONFIG_UNIQUE.add_items([(f"TUTORMONGO_{key}", value) for key, value in config["unique"].items()])
